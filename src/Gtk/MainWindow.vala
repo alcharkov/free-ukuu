@@ -55,7 +55,7 @@ public class MainWindow : Gtk.Window{
 	
 	public MainWindow() {
 		
-		title = AppName; //"%s (Ukuu) v%s".printf(AppName, AppVersion);
+		title = AppName;
         window_position = WindowPosition.CENTER;
         icon = get_app_icon(16,".svg");
 
@@ -114,8 +114,6 @@ public class MainWindow : Gtk.Window{
 			break;
 
 		default:
-
-			show_paid_version_message();
 			break;
 		}
 
@@ -166,7 +164,6 @@ public class MainWindow : Gtk.Window{
 			Gdk.Pixbuf pix;
 			model.get (iter, 1, out pix, -1);
 			(cell as Gtk.CellRendererPixbuf).pixbuf = pix;
-			//(cell as Gtk.CellRendererPixbuf).visible = !(App.hide_unstable);
 		});
 		
 		//cell text
@@ -254,7 +251,6 @@ public class MainWindow : Gtk.Window{
 			model.get_iter(out iter, path);
 			model.get (iter, 0, out kern, -1);
 			selected_kernels.add(kern);
-			//log_msg("size=%d".printf(selected_kernels.size));
 		}
 		
 		set_button_state();
@@ -697,19 +693,19 @@ public class MainWindow : Gtk.Window{
 			gtk_messagebox(_("No Internet"), _("Internet connection is not active"), this, true);
 			return;
 		}
-		
+
 		this.hide();
-		
+
 		var term = new TerminalWindow.with_parent(this, false, true);
-				
+
 		term.script_complete.connect(()=>{
 			term.allow_window_close();
 		});
-		
+
 		term.destroy.connect(()=>{
-			
+
 			show_grub_message();
-			
+
 			if (App.command == "list"){
 				this.present();
 				refresh_cache();
@@ -729,7 +725,7 @@ public class MainWindow : Gtk.Window{
 			sh += " --debug";
 		}
 		sh += " --install %s\n".printf(kern.name);
-			
+
 		sh += "echo ''\n";
 		sh += "echo 'Close window to exit...'\n";
 
@@ -806,28 +802,6 @@ public class MainWindow : Gtk.Window{
 			return;
 		}
 
-		// dummy
-
-		/*
-		var title = "Linux v4.7 Available";
-		var message = "Minor update available for installation";
-		
-		if (App.notify_bubble){
-			OSDNotify.notify_send(title,message,3000,"normal","info");
-		}
-		
-		if (App.notify_dialog){
-			
-			var win = new UpdateNotificationWindow(
-					AppName,
-					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
-					null);
-					
-			win.destroy.connect(Gtk.main_quit);
-			Gtk.main(); // start event loop
-		}
-		* */
-
 		log_msg(_("No updates found"));
 	}
 
@@ -843,14 +817,4 @@ public class MainWindow : Gtk.Window{
 		}
 	}
 
-	public void show_paid_version_message(){
-		
-		if (!App.message_shown){
-			
-			App.message_shown = true;
-			App.save_app_config();
-
-			var win = new VersionMessageWindow(this);
-		}
-	}
 }

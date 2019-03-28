@@ -66,7 +66,7 @@ public class UpdateNotificationWindow : Gtk.Window {
 		if (lbl_msg.get_allocated_height() > 400){
 			sw_msg.vscrollbar_policy = PolicyType.AUTOMATIC;
 			sw_msg.set_size_request(-1,400);
-			lbl_msg.margin_right = 25;
+			lbl_msg.margin_end = 25;
 		}
 		else{
 			sw_msg.vscrollbar_policy = PolicyType.NEVER;
@@ -80,9 +80,7 @@ public class UpdateNotificationWindow : Gtk.Window {
 		icon = get_app_icon(16);
 		resizable = false;
 		deletable = false;
-		//skip_taskbar_hint = true;
-		//skip_pager_hint = true;
-		
+
 		//vbox_main
 		vbox_main = new Gtk.Box(Orientation.VERTICAL, 6);
 		vbox_main.margin = 6;
@@ -112,12 +110,12 @@ public class UpdateNotificationWindow : Gtk.Window {
 
 		// img
 		var img = new Image.from_icon_name(icon_name, Gtk.IconSize.DIALOG);
-		img.margin_right = 12;
+		img.margin_end = 12;
 		hbox_contents.add(img);
 
 		// vbox_msg
 		var vbox_msg = new Gtk.Box(Orientation.VERTICAL, 24);
-		vbox_msg.margin_right = 6;
+		vbox_msg.margin_end = 6;
 		hbox_contents.add(vbox_msg);
 
 		// lbl_msg

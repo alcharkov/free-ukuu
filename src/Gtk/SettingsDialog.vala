@@ -73,7 +73,7 @@ public class SettingsDialog : Gtk.Dialog {
 		// chk_notify_major
 		var chk = new Gtk.CheckButton.with_label(_("Notify if a major release is available"));
 		chk.active = App.notify_major;
-		chk.margin_left = 6;
+		chk.margin_start = 6;
 		vbox_main.add(chk);
 		chk_notify_major = chk;
 
@@ -84,7 +84,7 @@ public class SettingsDialog : Gtk.Dialog {
 		// chk_notify_minor
 		chk = new Gtk.CheckButton.with_label(_("Notify if a point release is available"));
 		chk.active = App.notify_minor;
-		chk.margin_left = 6;
+		chk.margin_start = 6;
 		vbox_main.add(chk);
 		chk_notify_minor = chk;
 		
@@ -95,7 +95,7 @@ public class SettingsDialog : Gtk.Dialog {
 		// show bubble
 		chk = new Gtk.CheckButton.with_label(_("Show notification bubble on desktop"));
 		chk.active = App.notify_bubble;
-		chk.margin_left = 6;
+		chk.margin_start = 6;
 		vbox_main.add(chk);
 		chk_notify_bubble = chk;
 
@@ -106,7 +106,7 @@ public class SettingsDialog : Gtk.Dialog {
 		// show window
 		chk = new Gtk.CheckButton.with_label(_("Show notification dialog"));
 		chk.active = App.notify_dialog;
-		chk.margin_left = 6;
+		chk.margin_start = 6;
 		chk.margin_bottom = 6;
 		vbox_main.add(chk);
 		chk_notify_dialog = chk;
@@ -121,7 +121,7 @@ public class SettingsDialog : Gtk.Dialog {
 		
 		label = new Label(_("Check every"));
 		label.xalign = (float) 0.0;
-		label.margin_left = 6;
+		label.margin_start = 6;
 		hbox.add (label);
 
 		var adjustment = new Gtk.Adjustment(App.notify_interval_value, 1, 52, 1, 1, 0);
@@ -169,7 +169,7 @@ public class SettingsDialog : Gtk.Dialog {
 		// chk_hide_unstable
 		chk = new CheckButton.with_label(_("Hide unstable and RC releases"));
 		chk.active = LinuxKernel.hide_unstable;
-		chk.margin_left = 6;
+		chk.margin_start = 6;
 		vbox_main.add(chk);
 		chk_hide_unstable = chk;
 		
@@ -180,7 +180,7 @@ public class SettingsDialog : Gtk.Dialog {
 		// chk_hide_older
 		chk = new CheckButton.with_label(_("Hide kernels older than 4.0"));
 		chk.active = LinuxKernel.hide_older;
-		chk.margin_left = 6;
+		chk.margin_start = 6;
 		vbox_main.add(chk);
 		chk_hide_older = chk;
 		
@@ -202,7 +202,7 @@ public class SettingsDialog : Gtk.Dialog {
 		// chk_update_grub_timeout
 		chk = new CheckButton.with_label(_("Set GRUB menu timeout"));
 		chk.active = LinuxKernel.update_grub_timeout;
-		chk.margin_left = 6;
+		chk.margin_start = 6;
 		chk.hexpand = true;
 		hbox.add(chk);
 		chk_update_grub_timeout = chk;
@@ -216,7 +216,7 @@ public class SettingsDialog : Gtk.Dialog {
 		adjustment = new Gtk.Adjustment(LinuxKernel.grub_timeout, 1, 9999, 1, 1, 0);
 		spin = new Gtk.SpinButton (adjustment, 1, 0);
 		spin.xalign = (float) 0.5;
-		spin.margin_right = 6;
+		spin.margin_end = 6;
 		hbox.add(spin);
 		var spin_grub = spin;
 

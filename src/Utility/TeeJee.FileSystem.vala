@@ -714,23 +714,6 @@ namespace TeeJee.FileSystem{
 		return false;
 	}
 
-	// hashing -----------
-	
-	private string hash_md5(string path){
-		Checksum checksum = new Checksum (ChecksumType.MD5);
-		FileStream stream = FileStream.open (path, "rb");
-
-		uint8 fbuf[100];
-		size_t size;
-		while ((size = stream.read (fbuf)) > 0){
-		  checksum.update (fbuf, size);
-		}
-		
-		unowned string digest = checksum.get_string();
-
-		return digest;
-	}
-
 	// misc --------------------
 
 	public string format_file_size (

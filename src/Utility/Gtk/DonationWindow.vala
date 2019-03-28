@@ -125,21 +125,6 @@ public class DonationWindow : Gtk.Window {
 		this.show_all();
 	}
 
-	private void add_heading(string msg){
-		
-		var label = new Gtk.Label("<span weight=\"bold\" size=\"large\" style=\"italic\">%s</span>".printf(msg));
-
-		label.set_use_markup(true);
-		
-		label.wrap = true;
-		label.wrap_mode = Pango.WrapMode.WORD;
-		label.max_width_chars = 80;
-		
-		label.xalign = 0.0f;
-		label.margin_top = 12;
-		vbox_main.add(label);
-	}
-	
 	private string format_heading(string msg){
 
 		return "<span weight=\"bold\" size=\"large\" style=\"italic\">%s</span>".printf(msg);
@@ -177,22 +162,10 @@ public class DonationWindow : Gtk.Window {
 		button.set_tooltip_text(url);
 		box.add(button);
 
-		//button.set_size_request(200,-1);
-		
 		button.clicked.connect(() => {
 			xdg_open(url, username);
 		});
 	}
 
-	private void add_link_button(Gtk.Box box, string text, string url){
-
-		var button = new Gtk.LinkButton.with_label("", text);
-		button.set_tooltip_text(url);
-		box.add(button);
-		
-		button.clicked.connect(() => {
-			xdg_open(url, username);
-		});
-	}
 }
 
