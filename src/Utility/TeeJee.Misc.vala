@@ -301,8 +301,6 @@ namespace TeeJee.Misc {
 
 		double length_partial = length - length_remaining - Math.floor(length_complete);
 
-		var partial_chars = new string[] { " ", "▏","▎","▍","▌","▋","▊","▉","█" };
-
 		int partial_index = (int) (length_partial * 8.0);
 
 		if (partial_index < 0){
