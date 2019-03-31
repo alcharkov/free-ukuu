@@ -280,7 +280,7 @@ public class AboutWindow : Dialog {
 
 		//btn_credits
 		btn_credits = new Button.with_label("  " + _("Credits"));
-		btn_credits.set_image (new Image.from_stock ("gtk-about", IconSize.MENU));
+		btn_credits.set_image (new Image.from_icon_name ("gtk-about", IconSize.MENU));
 		hbox_action.add(btn_credits);
 
         btn_credits.clicked.connect(()=>{
@@ -293,17 +293,17 @@ public class AboutWindow : Dialog {
 
 			if (vbox_credits.visible){
 				btn_credits.label = "  " + _("Back");
-				btn_credits.set_image (new Image.from_stock ("gtk-go-back", IconSize.MENU));
+				btn_credits.set_image (new Image.from_icon_name ("gtk-go-back", IconSize.MENU));
 			}
 			else{
 				btn_credits.label = "  " + _("Credits");
-				btn_credits.set_image (new Image.from_stock ("gtk-about", IconSize.MENU));
+				btn_credits.set_image (new Image.from_icon_name ("gtk-about", IconSize.MENU));
 			}
 		});
 
 		//btn_close
 		btn_close = new Button.with_label("  " + _("Close"));
-		btn_close.set_image (new Image.from_stock ("gtk-close", IconSize.MENU));
+		btn_close.set_image (new Image.from_icon_name ("gtk-close", IconSize.MENU));
 		hbox_action.add(btn_close);
 
 		btn_close.clicked.connect(()=>{ this.destroy(); });
